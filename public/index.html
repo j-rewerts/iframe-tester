@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>IFrame Tester</title>
+    <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+  </head>
+  <body>
+    <div id="plugin_initiatives"></div>
+    <script>
+    var url = 'http://localhost:8080/#/new-idea';
+    var pymParent = new pym.Parent('plugin_initiatives', url, {});
+    var colors = {
+      primary: '#005087',
+      accent: '#66b677'
+    }
+    pymParent.onMessage('VueLoaded', function() {
+      console.log('first call')
+      pymParent.sendMessage('colors', JSON.stringify(colors))
+    })
+    </script>
+  </body>
+</html>
